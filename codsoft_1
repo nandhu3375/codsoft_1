@@ -1,0 +1,23 @@
+import re
+def chatbot_response(user_input):
+    user_input = user_input.lower().strip()
+    if re.search(r'\b(hi|hello|hey|namaste)\b', user_input):
+        return "Hello! How can I help you today?"
+    elif "your name" in user_input:
+        return "I'm a simple chatbot. You can call me ChatBuddy!"
+    elif "weather" in user_input:
+        return "I'm not connected to the internet, but I hope the weather is nice where you are!"
+    elif "help" in user_input:
+        return "Sure! I can answer your basic questions. Ask me anything."
+    elif re.search(r'\b(bye|goodbye|see you)\b', user_input):
+        return "Goodbye! Have a great day 😊"
+    else:
+        return "Sorry, I didn't understand that. Can you please rephrase?"
+print("ChatBot: Hello! Type 'bye' to exit.")
+while True:
+    user_text = input("You: ")
+    if user_text.lower() in ['bye', 'exit', 'quit']:
+        print("ChatBot: Goodbye! 👋")
+        break
+    response = chatbot_response(user_text)
+    print("ChatBot:", response)
